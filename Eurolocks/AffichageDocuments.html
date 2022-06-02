@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+function chargeDocuments()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","CRUDDocuments.php?action="+x+"&ID=-1&doc_nom="+y);
+        xmlhttp.send(); 
+}
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeDocuments()">
+<div class="wb-tabs ignore-session">
+	   
+<h1> Afichage des documents </h1>
+<h2><a href="AffichageDocuments.html">Retour accueil</a></h2>
+ 
+<div id='res' width=80%> ici </div>   
+ 
+ <br>
+
+</body>
+</html>

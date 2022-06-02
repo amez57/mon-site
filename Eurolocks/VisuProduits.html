@@ -1,0 +1,110 @@
+
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+function chargeProduits()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","AfficheProduits.php?action="+x+"&ID=-1&NomReference="+y);
+        xmlhttp.send(); 
+}
+
+function remplitCombo()
+{
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("choix").innerHTML = this.responseText;
+            }
+        }
+        x = 'combo'; y='';  
+        xmlhttp.open("GET","AfficheProduits.php?action="+x+"&ID=-1&NomReference="+y);
+        xmlhttp.send();
+}
+
+
+
+
+function FiltreComboF(element)
+{
+    var elementsel = element.options[element.selectedIndex];
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'filtrer'; y='';      
+        xmlhttp.open("GET","AfficheProduits.php?action="+x+"&ID=-1&NomReference="+y+"&filtreIDF="+elementsel.value);
+        xmlhttp.send(); 
+}
+
+function FiltreComboSF(element)
+{
+    var elementsel = element.options[element.selectedIndex];
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'filtrer'; y='';      
+        xmlhttp.open("GET","AfficheProduits.php?action="+x+"&ID=-1&NomReference="+y+"&filtreIDSF="+elementsel.value);
+        xmlhttp.send(); 
+}
+
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeProduits();remplitCombo();">
+<div class="wb-tabs ignore-session">
+	   
+<h1> Visualisation des Produits </h1>
+<h2><a href="MenuVisu.php"> Retour accueil </a></h2>
+<div id="choix"></div>
+<br>
+<div id='res' width=80%> ici </div>   
+    
+ 
+
+</body>
+</html>

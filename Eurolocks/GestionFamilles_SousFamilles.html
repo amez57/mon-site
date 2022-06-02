@@ -1,0 +1,201 @@
+
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+///////////////////////////////////////////////////////////////Famille//////////////////////////////////////////////////////////////////////////
+
+function chargeFamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","CRUDFamilles.php?action="+x+"&ID=-1&lib="+y);
+        xmlhttp.send(); 
+}
+
+function createFamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajout';
+        b =document.getElementById('tlibajout').value;
+        xmlhttp.open("GET","CRUDFamilles.php?action="+a+"&ID=-1&lib="+b);
+        xmlhttp.send(); 
+}
+
+function modifFamilles(index)
+{
+    Entree="tlib"+index;
+    libelle=document.getElementById(Entree).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDFamilles.php?ID="+index+"&lib='"+libelle+"'&action=modif");
+        xmlhttp.send(); 
+        alert("Modification de la famille effectuée");
+}
+
+function supprFamilles(index)
+{
+    Entree="tlib"+index;
+    libelle=document.getElementById(Entree).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDFamilles.php?ID="+index+"&lib='"+libelle+"'&action=suppr");
+        xmlhttp.send(); 
+
+}
+/////////////////////////////////////////////////////////////Sous Famille//////////////////////////////////////////////////////////////////////////////
+
+function chargeSousfamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","CRUDSousfamilles.php?action="+x+"&ID=-1&lib="+y);
+        xmlhttp.send(); 
+}
+
+function createSousFamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajoutSF';
+        b =document.getElementById('tlibajoutSF').value;
+        xmlhttp.open("GET","CRUDSousfamilles.php?action="+a+"&ID=-1&lib="+b);
+        xmlhttp.send(); 
+}
+
+function modifSousFamilles(index)
+{
+    Entree="tlib"+index;
+    libelle=document.getElementById(Entree).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDSousfamilles.php?ID="+index+"&lib='"+libelle+"'&action=modif");
+        xmlhttp.send(); 
+        alert("Modification de la sous famille effectuée");
+}
+
+function supprSousFamilles(index)
+{
+    Entree="tlib"+index;
+    libelle=document.getElementById(Entree).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDSousfamilles.php?ID="+index+"&lib='"+libelle+"'&action=suppr");
+        xmlhttp.send(); 
+
+}
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeSousfamilles(); chargeFamilles();">
+<div class="wb-tabs ignore-session">
+
+<h2><a href="MenuCRUD.php"> Retour accueil </a></h2>
+<h1> Gestion des Familles </h1>
+<br><br>
+<div id='res2'></div>
+
+<h1> Gestion des SousFamilles </h1>
+<br><br>
+<div id='res'></div>
+ 
+</body>
+</html>

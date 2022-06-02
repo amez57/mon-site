@@ -1,0 +1,207 @@
+
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+function chargeProduits()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","CRUDProduits.php?action="+x+"&ID=-1&NomReference="+y);
+        xmlhttp.send(); 
+}
+
+function createProduits()
+{
+    cbfa='cbFamA';
+    sfa=document.getElementById(cbfa).value;
+    cbsfa='cbSFamA';
+    ssfa=document.getElementById(cbsfa).value;
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajout';
+        b =document.getElementById('tnomajout').value;
+        xmlhttp.open("GET","CRUDProduits.php?action="+a+"&ID=-1&NomReference="+b+"&FamA="+sfa+"&SFamA="+ssfa);
+        xmlhttp.send(); 
+}
+
+function createSF()
+{
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajoutsfa';
+        b =document.getElementById('tsfajout').value;
+        xmlhttp.open("GET","CRUDProduits.php?action="+a+"&ID=-1&Nom="+b);
+        xmlhttp.send();
+}
+
+function modifProduits(index)
+{
+    Entree="tnom"+index;
+    libelle=document.getElementById(Entree).value;
+    cbf='cbFam'+index;
+    sf=document.getElementById(cbf).value;
+    cbsf='cbSFam'+index;
+    ssf=document.getElementById(cbsf).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDProduits.php?ID="+index+"&NomReference='"+libelle+"'&action=modif&Fam="+sf+"&SFam="+ssf);
+        xmlhttp.send(); 
+    alert("Modification du produit effectuée");
+
+}
+
+function supprProduits(index)
+{
+    Entree="tnom"+index;
+    libelle=document.getElementById(Entree).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDProduits.php?ID="+index+"&NomReference='"+libelle+"'&action=suppr");
+        xmlhttp.send(); 
+}
+function montre(id)
+{
+    var e = document.getElementById(id);
+    //alert(e.value);
+}
+
+function remplitCombo()
+{
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("choix").innerHTML = this.responseText;
+            }
+        }
+        x = 'combo'; y='';  
+        xmlhttp.open("GET","CRUDProduits.php?action="+x+"&ID=-1&NomReference="+y);
+        xmlhttp.send();
+}
+
+
+
+
+function FiltreComboF(element)
+{
+    var elementsel = element.options[element.selectedIndex];
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'filtrer'; y='';      
+        xmlhttp.open("GET","CRUDProduits.php?action="+x+"&ID=-1&NomReference="+y+"&filtreIDF="+elementsel.value);
+        xmlhttp.send(); 
+}
+
+function FiltreComboSF(element)
+{
+    var elementsel = element.options[element.selectedIndex];
+// objet AJAX
+if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'filtrer'; y='';      
+        xmlhttp.open("GET","CRUDProduits.php?action="+x+"&ID=-1&NomReference="+y+"&filtreIDSF="+elementsel.value);
+        xmlhttp.send(); 
+}
+
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeProduits();remplitCombo();">
+<div class="wb-tabs ignore-session">
+	   
+<h1> Gestion des Produits </h1>
+<h2><a href="MenuCRUD.php"> Retour accueil </a></h2>
+<div id="choix"></div>
+<br>
+<div id='res' width=80%> ici </div>   
+
+
+
+</body>
+</html>

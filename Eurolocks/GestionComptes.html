@@ -1,0 +1,315 @@
+
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+///////////////////////////////////////////////////////////////Utilisateur//////////////////////////////////////////////////////////////////////////
+
+function chargeUser()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y=''; z=''
+        xmlhttp.open("GET","CRUDUser.php?action="+x+"&ID=-1&nom_utilisateur="+y+"&mot_de_passe="+z);
+        xmlhttp.send(); 
+}
+
+function createUser()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajout';
+        b =document.getElementById('tuserajout').value;
+        c =document.getElementById('tmdpuserajout').value;
+        xmlhttp.open("GET","CRUDUser.php?action="+a+"&ID=-1&nom_utilisateur="+b+"&mot_de_passe="+c);
+        xmlhttp.send(); 
+}
+
+function modifUser(index)
+{
+    Entree="tuser"+index;
+    Entree2="tmdpuser"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        m =document.getElementById('tmdpuserajout').value;
+        xmlhttp.open("GET","CRUDUser.php?ID="+index+"&nom_utilisateur='"+libelle+"'&mot_de_passe='"+libelle2+"'&action=modif");
+        xmlhttp.send(); 
+        alert("Modification de l'utilisateur effectuée");
+}
+
+function supprUser(index)
+{
+    Entree="tuser"+index;
+    Entree2="tmdpuser"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDUser.php?ID="+index+"&nom_utilisateur='"+libelle+"'&action=suppr"+"&mot_de_passe="+libelle2);
+        xmlhttp.send(); 
+
+}
+/////////////////////////////////////////////////////////////Administrateur//////////////////////////////////////////////////////////////////////////////
+
+function chargeAdmin()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y=''; z=''
+        xmlhttp.open("GET","CRUDAdmin.php?action="+x+"&ID=-1&nom_admin="+y+"&mdp_admin="+z);
+        xmlhttp.send(); 
+}
+
+function createAdmin()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajout';
+        b =document.getElementById('tadminajout').value;
+        c =document.getElementById('tmdpadminajout').value;
+        xmlhttp.open("GET","CRUDAdmin.php?action="+a+"&ID=-1&nom_admin="+b+"&mdp_admin="+c);
+        xmlhttp.send(); 
+}
+
+function modifAdmin(index)
+{
+    Entree="tadmin"+index;
+    Entree2="tmdpadmin"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        m =document.getElementById('tmdpadminajout').value;
+        xmlhttp.open("GET","CRUDAdmin.php?ID="+index+"&nom_admin='"+libelle+"'&mdp_admin='"+libelle2+"'&action=modif");
+        xmlhttp.send(); 
+        alert("Modification de l'administrateur effectuée");
+}
+
+function supprAdmin(index)
+{
+    Entree="tadmin"+index;
+    Entree2="tmdpadmin"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDAdmin.php?ID="+index+"&nom_admin='"+libelle+"'&action=suppr"+"&mdp_admin="+libelle2);
+        xmlhttp.send(); 
+
+}
+
+/////////////////////////////////////////////////////////////Super Administrateur//////////////////////////////////////////////////////////////////////////////
+
+
+function chargeSupAdmin()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res3").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y=''; z=''
+        xmlhttp.open("GET","CRUDSupAdmin.php?action="+x+"&ID=-1&nom_sadmin="+y+"&mdp_sadmin="+z);
+        xmlhttp.send(); 
+}
+
+function createSupAdmin()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res3").innerHTML = this.responseText;
+            }
+        }
+        a = 'ajout';
+        b =document.getElementById('tsadminajout').value;
+        c =document.getElementById('tmdpsadminajout').value;
+        xmlhttp.open("GET","CRUDSupAdmin.php?action="+a+"&ID=-1&nom_sadmin="+b+"&mdp_sadmin="+c);
+        xmlhttp.send(); 
+}
+
+function modifSupAdmin(index)
+{
+    Entree="tsadmin"+index;
+    Entree2="tmdpsadmin"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res3").innerHTML = this.responseText;
+            }
+        }
+        m =document.getElementById('tmdpadminajout').value;
+        xmlhttp.open("GET","CRUDSupAdmin.php?ID="+index+"&nom_sadmin='"+libelle+"'&mdp_sadmin='"+libelle2+"'&action=modif");
+        xmlhttp.send(); 
+        alert("Modification du super administrateur effectuée");
+}
+
+function supprSupAdmin(index)
+{
+    Entree="tsadmin"+index;
+    Entree2="tmdpsadmin"+index;
+    libelle=document.getElementById(Entree).value;
+    libelle2=document.getElementById(Entree2).value;
+
+    
+    	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res3").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET","CRUDSupAdmin.php?ID="+index+"&nom_sadmin='"+libelle+"'&action=suppr"+"&mdp_sadmin="+libelle2);
+        xmlhttp.send(); 
+
+}
+
+
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeUser(); chargeAdmin(); chargeSupAdmin();">
+<div class="wb-tabs ignore-session">
+
+<h2><a href="MenuALL.php"> Retour accueil </a></h2>
+<h1> Gestion des Utilisateurs </h1>
+<br><br>
+<div id='res2'></div>
+
+<h1> Gestion des Administrateurs </h1>
+<br><br>
+<div id='res'></div>
+ 
+<h1> Gestion des Super Administrateurs </h1>
+<br><br>
+<div id='res3'></div>
+</body>
+</html>

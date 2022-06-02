@@ -1,0 +1,70 @@
+
+   <link rel="stylesheet" media="screen and (min-width: 200px) and (max-width: 640px)" />
+   <head>
+   <meta charset="UTF-8">
+   <title>Eurolocks</title>
+   <meta name="viewport" content="width=device-width"/>
+  
+   
+<script>
+
+///////////////////////////////////////////////////////////////Famille//////////////////////////////////////////////////////////////////////////
+
+function chargeFamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res2").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","AfficheFamilles.php?action="+x+"&ID=-1&lib="+y);
+        xmlhttp.send(); 
+}
+
+function chargeSousfamilles()
+{
+    
+	// objet AJAX
+	if (window.XMLHttpRequest) {
+            // code pour IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+              xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("res").innerHTML = this.responseText;
+            }
+        }
+        x = 'affiche'; y='';
+        xmlhttp.open("GET","AfficheSousfamilles.php?action="+x+"&ID=-1&lib="+y);
+        xmlhttp.send(); 
+}
+
+</script>
+ </head>
+
+	  
+ <body onload="chargeSousfamilles(); chargeFamilles();">
+<div class="wb-tabs ignore-session">
+
+<h2><a href="MenuVisu.php"> Retour accueil </a></h2>
+<h1> Visualisation des Familles </h1>
+<br><br>
+<div id='res2'></div>
+
+<h1> Visualisation des SousFamilles </h1>
+<br><br>
+<div id='res'></div>
+ 
+</body>
+</html>
